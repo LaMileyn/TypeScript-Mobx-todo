@@ -17,6 +17,8 @@ class TodoStore {
     // тип модального окна при добавленнии / изменении todo
     modalTodoType : typeModalTodos = "add"
 
+    modalIsOpened : boolean = false
+
     constructor() {
         makeAutoObservable(this)
     }
@@ -38,6 +40,10 @@ class TodoStore {
     // изменение типа выводимых todo в компоненте
     changeCurrentTypeTodos( type : typeTodos ){
         this.currentTypeTodos = type
+    }
+    // open / close modal
+    changeModal(to : boolean){
+        this.modalIsOpened = to
     }
 }
 
