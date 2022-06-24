@@ -1,7 +1,7 @@
 export interface ITodo {
     id : number
     name : string,
-    type : string,
+    type : "done" | "process",
     dateCreated : string
 }
 export type typeTodos = "all" | "done" | "process"

@@ -4,7 +4,12 @@ import {ITodo, typeModalTodos, typeTodos} from "../../appTypes/TodoTypes";
 class TodoStore {
 
     // общий массив всех todo
-    todos : Array<ITodo> = localStorage.getItem('todosData')? JSON.parse(localStorage.getItem('todosData')!) : []
+    todos : Array<ITodo> = localStorage.getItem('todosData')? JSON.parse(localStorage.getItem('todosData')!) : [
+        { id : 1, type : "process", dateCreated : new Date().getDate(), name : "Постирать пыльцу"},
+        { id : 2, type : "process", dateCreated : new Date().getDate(), name : "Постирать машину"},
+        { id : 3, type : "process", dateCreated : new Date().getDate(), name : "Постирать мама"},
+        { id : 4, type : "process", dateCreated : new Date().getDate(), name : "Постирать папа"},
+    ]
 
     // тип выводимых todo в компоненте
     currentTypeTodos : typeTodos = "all"

@@ -13,3 +13,15 @@
 html {
   font-family: $fontFamilyApp;
 }
+
+body{
+  background-color: $blueColor;
+}
+.container{
+  padding: $containerPaddings;
+}
+img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
