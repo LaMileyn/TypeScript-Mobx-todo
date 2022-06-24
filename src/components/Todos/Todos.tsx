@@ -3,6 +3,7 @@ import {ITodo} from "../../appTypes/TodoTypes";
 import Todo from "./Todo/Todo";
 import s from './Todos.module.scss'
 import PlusIcon from "../../UI/Icons/PlusIcon";
+import TodoStore from "../../mobx/Todos/TodoStore";
 
 
 interface IProps {
@@ -19,7 +20,7 @@ const Todos: FC<IProps> = ({todos}) => {
                 <div className={s.add__icon}>
                     <PlusIcon/>
                 </div>
-                <span>Add more</span>
+                <span onClick={ () => TodoStore.changeModal(true)}>Add more</span>
             </div>
         </div>
 
