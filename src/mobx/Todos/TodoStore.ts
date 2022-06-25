@@ -20,6 +20,10 @@ class TodoStore implements ITodoStore{
     modalTodoType : typeModalTodos = "add"
     // opened / close modal
     modal : boolean = false
+    // change modal
+    changeModal( to : boolean){
+        this.modal = to
+    }
     // добавление todo в массив [todos] и в [localStorage]
     addTodo(text : string){
         const [ year, month, day ] = [ new Date().getFullYear(), new Date().getMonth(), new Date().getDay() ]

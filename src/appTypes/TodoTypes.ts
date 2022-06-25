@@ -22,6 +22,8 @@ export interface ITodoStore {
     changeModalType : ( type : typeModalTodos ) => void,
     // opened / close modal
     modal : boolean,
+    // change modal / closed \ opened
+    changeModal : ( to : boolean ) => void
     // изменение типа выводимых todo в компоненте
     changeCurrentTypeTodos : ( type : typeTodos ) => void
 }

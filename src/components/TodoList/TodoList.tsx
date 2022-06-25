@@ -10,7 +10,7 @@ const TodoList : FC = observer( (props) => {
 
     return (
         <section className={s.todoList}>
-            { TodoStore.modalIsOpened && (
+            { TodoStore.modal && (
                 <Modal type={TodoStore.modalTodoType}/>
             )}
             <div className={s.todoList__headline}><h2>TodoList</h2></div>
