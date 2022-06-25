@@ -2,7 +2,7 @@ import React, {FC} from 'react';
 import {ITodo} from "../../appTypes/TodoTypes";
 import Todo from "./Todo/Todo";
 import s from './Todos.module.scss'
-import PlusIcon from "../../UI/Icons/PlusIcon";
+import PlusIcon from "../Icons/PlusIcon";
 import TodoStore from "../../mobx/Todos/TodoStore";
 
 
@@ -13,6 +13,9 @@ interface IProps {
 const Todos: FC<IProps> = ({todos}) => {
     return (
         <div className={s.todos}>
+            {
+                !todos.length && <div className={s.todos__empty}>Туду пока что нет...</div>
+            }
             {todos.map(todo => (
                 <Todo key={todo.id} todo={todo}/>
             ))}

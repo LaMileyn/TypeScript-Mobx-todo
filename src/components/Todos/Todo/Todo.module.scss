@@ -11,6 +11,12 @@
   border-bottom: 1px solid rgba(144, 144, 144, 0.16);
 
 
+
+  &__checkbox{
+      transform: scale(1.4);
+      border: none;
+  }
+
   &__text{
     .text__name{
       color: $whiteColor;

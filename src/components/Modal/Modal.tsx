@@ -1,7 +1,6 @@
 import React, {FC} from 'react';
 import s from './Modal.module.scss'
 import {typeModalTodos} from "../../appTypes/TodoTypes";
-import {observer} from "mobx-react-lite";
 import TodoStore from "../../mobx/Todos/TodoStore";
 
 
@@ -9,7 +8,13 @@ interface IProps {
     type: typeModalTodos
 }
 
-const Modal: FC<IProps> = observer(({type}) => {
+const Modal: FC<IProps> = ({type}) => {
+
+    const buttonChangeClickHandler = () =>{}
+    const buttonAddClickHandler = () =>{
+        TodoStore.changeModal(false)
+    }
+
     return (
         <div className={s.modal}>
             <div className={s.modal__container} onClick={ (e) => e.stopPropagation() }>
@@ -26,6 +31,6 @@ const Modal: FC<IProps> = observer(({type}) => {
             </div>
         </div>
     );
-})
+}
 
 export default Modal;

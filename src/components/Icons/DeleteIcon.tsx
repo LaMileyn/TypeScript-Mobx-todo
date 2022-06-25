@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import imgDelete from './../../assets/icons/trash.svg'
+import imgDelete from '../../assets/icons/trash.svg'
 
 const DeleteIcon : FC = (props) => {
     return (
