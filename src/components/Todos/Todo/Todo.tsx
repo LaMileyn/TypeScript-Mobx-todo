@@ -4,13 +4,12 @@ import s from './Todo.module.scss'
 import DeleteIcon from "../../Icons/DeleteIcon";
 import cn from 'classnames'
 import TodoStore from "../../../mobx/Todos/TodoStore";
-import {observer} from "mobx-react-lite";
 
 interface IProps {
     todo: ITodo
 }
 
-const Todo: FC<IProps> = observer(({todo}) => {
+const Todo: FC<IProps> = ({todo}) => {
     return (
         <>
             <div className={cn(s.todo)}>
@@ -19,7 +18,7 @@ const Todo: FC<IProps> = observer(({todo}) => {
                 </div>
                 <div className={s.todo__text}>
                     <div className={s.text__name}>{todo.name}</div>
-                    <div className={s.text__date}>{todo.dateCreated}</div>
+                    <div className={s.text__date}>{todo.created}</div>
                 </div>
                 <div className={s.todo__deletion}>
                     <div className={s.deletion__img} onClick={ () => TodoStore.removeTodo(todo.id)}>
@@ -30,6 +29,6 @@ const Todo: FC<IProps> = observer(({todo}) => {
         </>
 
     );
-})
+}
 
 export default Todo;

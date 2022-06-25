@@ -1,0 +1,54 @@
+@import "src/styles/variables";
+
+
+.add-new-todo{
+  padding: 20px 3rem 3rem 3rem;
+  background-color: rgba(0, 0, 0, 0.10);
+  border-radius: 7px;
+  h2{
+    color: $whiteColor;
+  }
+  .input{
+
+    margin-top: 2rem;
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+
+
+    &__error{
+      color: #bf4f4f;
+      font-size: 16px;
+    }
+    &__area{
+      flex: 1;
+      input{
+        margin-bottom: 15px;
+        padding: 12px 25px;
+        width: 100%;
+        border-radius: 7px;
+        background-color: rgba(0, 0, 0, 0.17);
+        font-size: 18px;
+        font-family: $fontFamilyApp;
+        font-weight: 600;
+        color: $whiteColor;
+        transition: .1s all ease-in-out;
+        border: 2px solid rgba(0, 0, 0, 0.17);
+        outline: none;
+        &:focus{
+          box-shadow: 0px 0px 6px 0px #5e69b691;
+          border: 2px solid $purpleColor;
+        }
+      }
+    }
+    &__icon{
+      width: 32px;
+      height: 32px;
+      cursor: pointer;
+      transition: .1s all ease-in-out;
+      &:hover{
+        transform: scale(1.1);
+      }
+    }
+  }
+}
