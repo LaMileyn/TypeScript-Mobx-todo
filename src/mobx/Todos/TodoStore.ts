@@ -1,49 +1,51 @@
 import { makeAutoObservable } from "mobx";
-import {ITodo, typeModalTodos, typeTodos} from "../../appTypes/TodoTypes";
+import {ITodo, ITodoStore, typeModalTodos, typeTodos} from "../../appTypes/TodoTypes";
 
-class TodoStore {
+
+class TodoStore implements ITodoStore{
 
     // общий массив всех todo
-    todos : Array<ITodo> = localStorage.getItem('todosData')? JSON.parse(localStorage.getItem('todosData')!) : [
-        { id : 1, type : "process", dateCreated : new Date().getDate(), name : "Постирать пыльцу"},
-        { id : 2, type : "process", dateCreated : new Date().getDate(), name : "Постирать машину"},
-        { id : 3, type : "process", dateCreated : new Date().getDate(), name : "Постирать мама"},
-        { id : 4, type : "process", dateCreated : new Date().getDate(), name : "Постирать папа"},
+    todos : Array<ITodo> = [
+        { id : 1, type : "process", dateCreated : new Date().getDate().toString(1), name : "Постирать пыльцу"},
+        { id : 2, type : "process", dateCreated : new Date().getDate().toString(1), name : "Постирать машину"},
+        { id : 3, type : "process", dateCreated : new Date().getDate().toString(1), name : "Постирать мама"},
+        { id : 4, type : "process", dateCreated : new Date().getDate().toString(1), name : "Постирать папа"},
     ]
-
-    // тип выводимых todo в компоненте
-    currentTypeTodos : typeTodos = "all"
-
-    // тип модального окна при добавленнии / изменении todo
-    modalTodoType : typeModalTodos = "add"
-
-    modalIsOpened : boolean = false
-
     constructor() {
         makeAutoObservable(this)
     }
-
+    // тип выводимых todo в компоненте
+    currentTypeTodos : typeTodos = "all"
+    // тип модального окна при добавленнии / изменении todo
+    modalTodoType : typeModalTodos = "add"
+    // opened / close modal
+    modal : boolean = false
     // добавление todo в массив [todos] и в [localStorage]
-    addTodo(todo : ITodo){
-        this.todos.push(todo)
-        localStorage.setItem("todosData",JSON.stringify(this.todos))
+    addTodo(text : string){
+        const [ year, month, day ] = [ new Date().getFullYear(), new Date().getMonth(), new Date().getDay() ]
+        const new_todo : ITodo = {
+             id : Math.random() * ( new Date().getSeconds() ),
+             name : text,
+             type : "process",
+             dateCreated : `${year}.${month}.${day}`
+        }
+        this.todos.push(new_todo)
     }
     // изменение тип модального окна
-    changeModalType(type : typeModalTodos ){
+    changeModalType( type : typeModalTodos ){
         this.modalTodoType = type
     }
     // удаление todo из массива [todos] и из [localStorage]
     removeTodo(id : number){
         this.todos = this.todos.filter( todo => todo.id !== id )
-        localStorage.setItem("todosData",JSON.stringify(this.todos))
+    }
+    // изменение todo в массиве [todos]
+    changeTodo( text : string, id : number){
+        this.todos = this.todos.map( todo => todo.id === id ? {...todo, name : text } : todo)
     }
     // изменение типа выводимых todo в компоненте
     changeCurrentTypeTodos( type : typeTodos ){
         this.currentTypeTodos = type
-    }
-    // open / close modal
-    changeModal(to : boolean){
-        this.modalIsOpened = to
     }
 }
 

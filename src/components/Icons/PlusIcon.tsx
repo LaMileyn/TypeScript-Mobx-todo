@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import plus from './../../assets/icons/plus.svg'
+import plus from '../../assets/icons/plus.svg'
 
 const PlusIcon : FC = (props) => {
     return (

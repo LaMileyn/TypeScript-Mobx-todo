@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import {ITodo} from "../../../appTypes/TodoTypes";
 import s from './Todo.module.scss'
-import DeleteIcon from "../../../UI/Icons/DeleteIcon";
+import DeleteIcon from "../../Icons/DeleteIcon";
 import cn from 'classnames'
 
 interface IProps {

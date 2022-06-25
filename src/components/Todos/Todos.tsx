@@ -2,7 +2,7 @@ import React, {FC} from 'react';
 import {ITodo} from "../../appTypes/TodoTypes";
 import Todo from "./Todo/Todo";
 import s from './Todos.module.scss'
-import PlusIcon from "../../UI/Icons/PlusIcon";
+import PlusIcon from "../Icons/PlusIcon";
 import TodoStore from "../../mobx/Todos/TodoStore";
 
 
