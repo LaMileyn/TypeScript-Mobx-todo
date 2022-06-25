@@ -1,0 +1,39 @@
+@import "src/styles/variables";
+
+.input-border {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  .input{
+    width: 100%;
+    padding: 10px;
+    background: none;
+    border: none;
+    border-bottom: 2px solid rgba(120, 119, 119, 0.3);
+    margin-bottom: 40px;
+    color: $whiteColor;
+    font-family: $fontFamilyApp;
+    font-size: 20px;
+    &::placeholder{
+      color: $grayDarker;
+    }
+
+  }
+  .btn{
+    font-family: $fontFamilyApp;
+    font-size: 18px;
+    padding: 12px 40px;
+    border-radius: 15px;
+    border: none;
+    font-weight: 600;
+    color: $whiteColor;
+    background: $purpleColor;
+    transition: 100ms all ease-in-out;
+    cursor: pointer;
+    &:hover{
+      background-color: rgba(94, 105, 182, 0.78);
+    }
+  }
+}

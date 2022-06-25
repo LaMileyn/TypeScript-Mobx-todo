@@ -1,5 +1,5 @@
 import { makeAutoObservable } from "mobx";
-import {ITodo, ITodoStore, typeModalTodos, typeTodos, typeTodosFilter} from "../../appTypes/TodoTypes";
+import {ITodo, ITodoStore,  typeTodos, typeTodosFilter} from "../../appTypes/TodoTypes";
 
 
 class TodoStore implements ITodoStore{
@@ -22,14 +22,6 @@ class TodoStore implements ITodoStore{
 
     // тип выводимых todo в компоненте
     currentTypeTodos : typeTodosFilter = "All"
-    // тип модального окна при добавленнии / изменении todo
-    modalTodoType : typeModalTodos = "add"
-    // opened / close modal
-    modal : boolean = false
-    // change modal
-    changeModal( to : boolean){
-        this.modal = to
-    }
     // добавление todo в массив [todos] и в [localStorage]
     addTodo(text : string){
         const [ year, month, day ] = [ new Date().getFullYear(), new Date().getMonth(), new Date().getDay() ]
@@ -40,10 +32,6 @@ class TodoStore implements ITodoStore{
              dateCreated : `${year}.${month}.${day}`
         }
         this.todos.push(new_todo)
-    }
-    // изменение тип модального окна
-    changeModalType( type : typeModalTodos ){
-        this.modalTodoType = type
     }
     // удаление todo из массива [todos] и из [localStorage]
     removeTodo(id : number){
