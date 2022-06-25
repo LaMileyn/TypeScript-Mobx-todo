@@ -16,8 +16,8 @@ const Todo: FC<IProps> = ({todo}) => {
                     <input type="checkbox" className={s.checkbox}/>
             </div>
             <div className={s.todo__text}>
-                <div className={s.text__name}>Сделать уборку</div>
-                <div className={s.text__date}>2022.01.21</div>
+                <div className={s.text__name}>{todo.name}</div>
+                <div className={s.text__date}>{todo.dateCreated}</div>
             </div>
             <div className={s.todo__deletion}>
                 <div className={s.deletion__img} onClick={ () => TodoStore.removeTodo(todo.id)}>

@@ -11,9 +11,7 @@ interface IProps {
 const Modal: FC<IProps> = ({type}) => {
 
     const buttonChangeClickHandler = () =>{}
-
     const buttonAddClickHandler = () =>{
-
         TodoStore.changeModal(false)
     }
 
