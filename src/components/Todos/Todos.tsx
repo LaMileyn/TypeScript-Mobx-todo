@@ -13,6 +13,9 @@ interface IProps {
 const Todos: FC<IProps> = ({todos}) => {
     return (
         <div className={s.todos}>
+            {
+                !todos.length && <div className={s.todos__empty}>Туду пока что нет...</div>
+            }
             {todos.map(todo => (
                 <Todo key={todo.id} todo={todo}/>
             ))}

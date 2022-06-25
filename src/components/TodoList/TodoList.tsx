@@ -29,7 +29,7 @@ const TodoList : FC = observer( (props) => {
 
                 </div>
             </div>
-            <Todos todos={TodoStore.todos}/>
+            <Todos todos={TodoStore.currentTodos}/>
         </section>
     );
 })

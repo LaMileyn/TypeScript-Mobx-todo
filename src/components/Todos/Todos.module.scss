@@ -3,6 +3,12 @@
 .todos{
   margin-top: 60px;
 
+  &__empty{
+    color: $grayLight;
+    font-size: 20px;
+    padding: 30px 0;
+    text-align: center;
+  }
   &__add{
     cursor: pointer;
     margin-top: 10px;

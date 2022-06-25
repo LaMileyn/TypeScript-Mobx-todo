@@ -6,14 +6,20 @@ class TodoStore implements ITodoStore{
 
     // общий массив всех todo
     todos : Array<ITodo> = [
-        { id : 1, type : "process", dateCreated : new Date().getDate().toString(1), name : "Постирать пыльцу"},
-        { id : 2, type : "process", dateCreated : new Date().getDate().toString(1), name : "Постирать машину"},
-        { id : 3, type : "process", dateCreated : new Date().getDate().toString(1), name : "Постирать мама"},
-        { id : 4, type : "process", dateCreated : new Date().getDate().toString(1), name : "Постирать папа"},
+        { id : 1, type : "process", dateCreated : new Date().getDate().toString(3), name : "Постирать пыльцу"},
+        { id : 2, type : "process", dateCreated : new Date().getDate().toString(3), name : "Постирать машину"},
+        { id : 3, type : "process", dateCreated : new Date().getDate().toString(3), name : "Постирать мама"},
+        { id : 4, type : "process", dateCreated : new Date().getDate().toString(3), name : "Постирать папа"},
     ]
     constructor() {
         makeAutoObservable(this)
     }
+
+    get currentTodos(): Array<ITodo> {
+        if ( this.currentTypeTodos == "all" ) return this.todos
+        return this.todos.filter( todo => todo.type === this.currentTypeTodos )
+    }
+
     // тип выводимых todo в компоненте
     currentTypeTodos : typeTodos = "all"
     // тип модального окна при добавленнии / изменении todo

@@ -6,6 +6,8 @@ export interface ITodo {
 }
 
 export interface ITodoStore {
+
+    get currentTodos() : Array<ITodo>
     // общий массив всех todo
     todos : Array<ITodo>,
     // тип выводимых todo в компоненте
