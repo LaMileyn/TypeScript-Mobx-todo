@@ -20,4 +20,30 @@
     transition: all 200ms ease-in-out;
 
   }
+
+  .inputAdding{
+    .input{
+      display: grid;
+      grid-template-columns: auto 45px 45px;
+      align-items: center;
+      margin-bottom: 6px;
+      &__icon{
+        width: 35px;
+        height: 35px;
+        margin: 0 6px;
+        cursor: pointer;
+        transition: 100ms all linear;
+        &:hover{
+          transform: scale(1.05);
+        }
+
+      }
+      &__error{
+        color: #bf4f4f;
+        font-size: 13px;
+        margin-left: 15px;
+      }
+    }
+  }
+
 }

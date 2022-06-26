@@ -3,9 +3,11 @@ import {ITodo} from "../../appTypes/TodoTypes";
 import Todo from "./Todo/Todo";
 import s from './Todos.module.scss'
 import PlusIcon from "../Icons/PlusIcon";
-import TodoStore from "../../mobx/Todos/TodoStore";
-import InputAddTodo from "../inputAddTodo/InputAddTodo";
 import {observer} from "mobx-react-lite";
+import BlackInput from "../MyInputs/BlackInput";
+import AcceptIcon from "../Icons/AcceptIcon";
+import ExitIcon from "../Icons/ExitIcon";
+import todoStore from "../../mobx/Todos/TodoStore";
 
 
 interface IProps {
@@ -16,7 +18,21 @@ const Todos: FC<IProps> = observer(({todos}) => {
 
     // new todo
     const [adding, setAdding] = useState<boolean>(false)
-
+    // new todo Value
+    const [value, setValue] = useState<string>("")
+    // new todo Value
+    const [error, setError] = useState<boolean>(false)
+    // clickAccept
+    const clickAcceptHandler = () => {
+        if (value.trim()) {
+            todoStore.addTodo(value)
+            setValue("")
+            setError(false)
+            setAdding(false)
+        } else {
+            setError(true)
+        }
+    }
     return (
         <div className={s.todos}>
             {
@@ -28,12 +44,22 @@ const Todos: FC<IProps> = observer(({todos}) => {
             {
                 adding
                     ? (
-                        <div>
-                            <InputAddTodo cancel ={setAdding} />
+                        <div className={s.inputAdding}>
+                            <div className={s.input}>
+                                <BlackInput placeholder={"Введите название"} value={value}
+                                            autoFocus
+                                            onChange={(event) => setValue(event.currentTarget.value)}
+                                />
+                                <div onClick={clickAcceptHandler} className={s.input__icon}>
+                                    <AcceptIcon/></div>
+                                <div className={s.input__icon} onClick={() => setAdding(false)}>
+                                    <ExitIcon/></div>
+                            </div>
+                            {error && <span className={s.input__error}>Поле не должно быть пустым</span>}
                         </div>
                     )
                     : (
-                        <div className={s.todos__add} onClick={ () => setAdding(true)}>
+                        <div className={s.todos__add} onClick={() => setAdding(true)}>
                             <div className={s.add__icon}>
                                 <PlusIcon/>
                             </div>

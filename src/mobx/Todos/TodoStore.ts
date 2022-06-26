@@ -1,5 +1,6 @@
 import { makeAutoObservable } from "mobx";
-import {ITodo, ITodoStore, todoStates, todoStatesToFilter} from "../../appTypes/TodoTypes";
+import {ITodo, ITodoStore, todoStates } from "../../appTypes/TodoTypes";
+import {getFullDate, getUnicId} from "../../helpers/functions/getFullDate";
 
 
 class TodoStore implements ITodoStore{
@@ -25,12 +26,11 @@ class TodoStore implements ITodoStore{
 
     // добавление todo в массив [todos] и в [localStorage]
     addTodo(text : string){
-        const [ year, month, day ] = [ new Date().getFullYear(), new Date().getMonth(), new Date().getDay() ]
         const new_todo : ITodo = {
-            id : Math.random() * ( new Date().getSeconds() ),
+            id : getUnicId(),
             name : text,
             currentState : "process",
-            created : `${year}.${month}.${day}`
+            created : getFullDate()
         }
         this.todos.push(new_todo)
     }
