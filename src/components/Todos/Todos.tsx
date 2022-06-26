@@ -58,7 +58,7 @@ const Todos: FC<IProps> = observer(({todos}) => {
                             {error && <span className={s.input__error}>Поле не должно быть пустым</span>}
                         </div>
                     )
-                    : (
+                    : todoStore.currentStateTodos !== "done" && (
                         <div className={s.todos__add} onClick={() => setAdding(true)}>
                             <div className={s.add__icon}>
                                 <PlusIcon/>

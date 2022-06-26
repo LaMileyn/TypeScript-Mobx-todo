@@ -14,6 +14,22 @@
     text-decoration: line-through;
   }
 
+  // ---------- EDIT MOD
+  .editSection{
+    margin-left: 15px;
+    .edit__controls{
+      display: grid;
+      align-items: center;
+      grid-template-columns: auto 50px 50px;
+      gap: 1rem;
+    }
+    .edit__icon{
+      width: 30px;
+      height: 30px;
+    }
+  }
+  // ---------- EDIT MOD
+
   &__text{
     margin-left: 15px;
     .text__name{
