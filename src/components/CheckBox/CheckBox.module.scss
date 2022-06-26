@@ -1,0 +1,31 @@
+.check{
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  .check__input{
+    position: absolute;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
+
+  .checkbox{
+    position: absolute;
+    width: 3rem;
+    height: 3rem;
+    border: 2px solid #4747b4;
+    border-radius: 50%;
+    transition: 50ms all ease-in;
+  }
+
+  .check__input:checked + .checkbox{
+    background: url("./../../assets/icons/check.svg") center no-repeat;
+  }
+  .check__input:hover +  .checkbox{
+    background: url("./../../assets/icons/check.svg") center no-repeat;
+  }
+
+
+
+}

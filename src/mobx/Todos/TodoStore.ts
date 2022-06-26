@@ -7,10 +7,10 @@ class TodoStore implements ITodoStore{
 
     // общий массив всех todo
     todos : Array<ITodo> = [
-        { id : 1, currentState : "process", created : new Date().getDate().toString(3), name : "Постирать пыльцу"},
-        { id : 2, currentState : "process", created : new Date().getDate().toString(3), name : "Постирать машину"},
-        { id : 3, currentState : "process", created : new Date().getDate().toString(3), name : "Постирать мама"},
-        { id : 4, currentState : "process", created : new Date().getDate().toString(3), name : "Постирать папа"},
+        { id : 1, currentState : "process", created : "2022.05.22", name : "Постирать пыльцу"},
+        { id : 2, currentState : "process", created : "2022.05.22", name : "Постирать машину"},
+        { id : 3, currentState : "process", created : "2022.05.22", name : "Постирать мама"},
+        { id : 4, currentState : "process", created : "2022.05.22", name : "Постирать папа"},
     ]
     constructor() {
         makeAutoObservable(this)
@@ -44,7 +44,8 @@ class TodoStore implements ITodoStore{
     }
     // process ... active...
     changeTodoState( id : number, state : todoStates ){
-        this.todos = this.todos.map( todo => todo.id === id ? {...todo, currentState : state } : todo)
+        let updated = this.todos.map( todo => todo.id === id ? {...todo, currentState : state } : todo)
+        this.todos = updated
     }
     // изменение типа выводимых todo в компоненте
     changeCurrentStateTodos( state : string ){
