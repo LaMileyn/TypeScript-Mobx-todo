@@ -1,0 +1,19 @@
+@import "src/styles/variables";
+
+.mySelect{
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  color: $whiteColor;
+  border: none;
+  outline: none;
+  font-weight: 600;
+  width: 100%;
+  font-family: $fontFamilyApp;
+  background: url("./../../assets/icons/Vector.svg") no-repeat right transparent;
+  background-position-x: calc(100% - 13px);
+
+  option{
+    color: black;
+  }
+
+}

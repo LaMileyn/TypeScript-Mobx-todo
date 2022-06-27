@@ -1,8 +1,8 @@
 @import "src/styles/variables";
 
-.todo{
+.todo {
   display: grid;
-  grid-template-columns: 2rem auto 60px;
+  grid-template-columns: 2rem auto 40px;
   gap: 1rem;
   cursor: pointer;
   align-items: center;
@@ -10,20 +10,52 @@
   padding-bottom: 10px;
   border-bottom: 1px solid rgba(144, 144, 144, 0.16);
 
-
-
-  &__checkbox{
-      transform: scale(1.4);
-      border: none;
+  &.completed {
+    text-decoration: line-through;
   }
 
-  &__text{
-    .text__name{
+  // ---------- EDIT MOD
+  .editSection {
+    margin-left: 15px;
+
+    .edit__controls {
+      display: grid;
+      align-items: center;
+      grid-template-columns: auto 40px 40px;
+      gap: .3rem;
+    }
+
+    .edit__icon {
+      width: 30px;
+      height: 30px;
+    }
+
+    @media only screen and (max-width: 540px) {
+      & {
+        .edit__controls {
+          grid-template-columns: auto 30px 30px;
+        }
+
+        .edit__icon {
+          width: 30px;
+          height: 30px;
+        }
+      }
+    }
+  }
+
+  // ---------- EDIT MOD
+
+  &__text {
+    margin-left: 15px;
+
+    .text__name {
       color: $whiteColor;
       margin-bottom: 5px;
       font-weight: 500;
     }
-    .text__date{
+
+    .text__date {
       color: $grayDarker;
       margin-bottom: 5px;
       font-weight: 400;
@@ -31,16 +63,22 @@
     }
   }
 
-  &__deletion{
-    .deletion__img{
+  &__deletion {
+    .deletion__img {
       width: 25px;
       height: 25px;
     }
+
     transition: all 200ms ease-in-out;
     opacity: 0;
-    .todo:hover &{
+
+    .todo:hover & {
       opacity: 1;
     }
   }
 
+}
+
+.completed {
+  text-decoration: line-through;
 }
