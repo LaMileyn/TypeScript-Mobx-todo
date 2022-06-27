@@ -82,9 +82,6 @@ const Todo: FC<IProps> = ({todo}) => {
                             <DeleteIcon/>
                         </div>
                 </div>
-                {/*<MediaQuery maxWidth={540}>*/}
-                {/*    <MySelect data={[{ value : "delete", name : "Удалить"}]} onChange={ () => {}} value={selectValue}/>*/}
-                {/*</MediaQuery>*/}
             </div>
         </>
 
