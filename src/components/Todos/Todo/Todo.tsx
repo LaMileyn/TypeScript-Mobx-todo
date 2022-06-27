@@ -24,7 +24,7 @@ const Todo: FC<IProps> = ({todo}) => {
         } else {
             TodoStore.changeTodoState(todo.id, "done")
         }
-
+        setEditMode(false)
     }
 
 
@@ -42,6 +42,8 @@ const Todo: FC<IProps> = ({todo}) => {
         let acc = window.confirm("Вы уверены, что хотите удалить запись ?")
         if (acc) TodoStore.removeTodo(todo.id)
     }
+
+
 
     return (
         <>
