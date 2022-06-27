@@ -9,6 +9,8 @@ import BlackInput from "../../MyInputs/BlackInput";
 import AcceptIcon from "../../Icons/AcceptIcon";
 import ExitIcon from "../../Icons/ExitIcon";
 import todoStore from "../../../mobx/Todos/TodoStore";
+import MediaQuery from "react-responsive";
+import MySelect from "../../MySelect/MySelect";
 
 interface IProps {
     todo: ITodo
@@ -29,12 +31,16 @@ const Todo: FC<IProps> = ({todo}) => {
     const [editMode, setEditMode] = useState<boolean>(false)
     const [value, setValue] = useState<string>(todo.name)
 
-    const clickAcceptHandler = (id : number) => {
+    const clickAcceptHandler = (id: number) => {
         if (value.trim()) {
-            todoStore.changeTodo(value,id)
-            setValue("")
+            todoStore.changeTodo(value, id)
             setEditMode(false)
         }
+    }
+
+    const deleteHandler = ( id : number) =>{
+        let acc = window.confirm("Вы уверены, что хотите удалить запись ?")
+        if (acc) TodoStore.removeTodo(todo.id)
     }
 
     return (
@@ -49,8 +55,8 @@ const Todo: FC<IProps> = ({todo}) => {
                             <div className={s.editSection}>
                                 <div className={s.edit__controls}>
                                     <BlackInput value={value}
-                                                onChange={  (e) => setValue(e.currentTarget.value)}/>
-                                    <div className={s.edit__icon} onClick={ () => clickAcceptHandler(todo.id)}>
+                                                onChange={(e) => setValue(e.currentTarget.value)}/>
+                                    <div className={s.edit__icon} onClick={() => clickAcceptHandler(todo.id)}>
                                         <AcceptIcon/>
                                     </div>
                                     <div className={s.edit__icon} onClick={() => setEditMode(false)}>
@@ -60,18 +66,23 @@ const Todo: FC<IProps> = ({todo}) => {
                             </div>
                         )
                         : (
-                            <div className={s.todo__text} onClick={ todo.currentState === "process" ? () => setEditMode(true) : undefined}>
+                            <div className={s.todo__text}
+                                 onClick={todo.currentState === "process" ? () => setEditMode(true) : undefined}>
                                 <div className={s.text__name}>{todo.name}</div>
                                 <div className={s.text__date}>{todo.created}</div>
                             </div>
                         )
                 }
 
+
                 <div className={s.todo__deletion}>
-                    <div className={s.deletion__img} onClick={() => TodoStore.removeTodo(todo.id)}>
-                        <DeleteIcon/>
-                    </div>
+                        <div className={s.deletion__img} onClick={ () => deleteHandler(todo.id)}>
+                            <DeleteIcon/>
+                        </div>
                 </div>
+                {/*<MediaQuery maxWidth={540}>*/}
+                {/*    <MySelect data={[{ value : "delete", name : "Удалить"}]} onChange={ () => {}} value={selectValue}/>*/}
+                {/*</MediaQuery>*/}
             </div>
         </>
 
