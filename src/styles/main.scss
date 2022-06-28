@@ -18,13 +18,10 @@ body{
   background-color: $blueColor;
 }
 .container{
-  padding: $containerPaddings;
-  @media screen and (max-width: 540px){
-    &{
-      padding-left: 10px;
-      padding-right: 10px;
-    }
-  }
+  padding: 80px 0;
+  width: 100%;
+  max-width: 95%;
+  margin: auto;
 }
 img{
   width: 100%;
